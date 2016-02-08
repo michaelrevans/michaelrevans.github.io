@@ -1,0 +1,29 @@
+header {
+  text-align: center;
+}
+
+.tab-pane h1 {
+  text-align: center;
+}
+
+.tab-pane table {
+  margin:20px auto;
+}
+
+.table tr td {
+  vertical-align: middle!important;
+}
+
+
+@media all and (min-width:768px) {
+  #personal-info {
+    width: 60%;
+    margin-left: 20%;
+  }
+}
+
+@media all and (min-width:992px) {
+  .nav-tabs li:first-child {
+    margin-left: 67px;
+  }
+}
