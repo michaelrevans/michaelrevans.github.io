@@ -27,15 +27,48 @@ header {
   padding-bottom: 10px;
 }
 
+.job-btns {
+  float:right;
+}
+
+.upside-down {
+  -webkit-transform: rotate(-180deg);
+  -moz-tranform: rotate(-180deg);
+  tranform: rotate(-180deg);
+}
+
+@media all and (max-width:767px) {
+  .job-btns {
+    display: none;
+  }
+}
+
 @media all and (min-width:768px) {
   #personal-info {
     width: 60%;
     margin-left: 20%;
   }
+  .nav-tabs li:first-child {
+    margin-left: 30px;
+  }
 }
 
 @media all and (min-width:992px) {
   .nav-tabs li:first-child {
-    margin-left: 67px;
+    margin-left: 106px;
+  }
+  .tab-pane {
+    width: 84%;
+    margin-left: 8%;
+  }
+}
+
+@media all and (min-width:1200px) {
+  .nav-tabs li:first-child {
+    margin-left: 206px;
+  }
+  .tab-pane {
+    width: 76%;
+    margin-left: 12%;
   }
 }
