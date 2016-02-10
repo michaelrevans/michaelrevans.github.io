@@ -37,6 +37,11 @@ header {
   tranform: rotate(-180deg);
 }
 
+.panel-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 @media all and (max-width:767px) {
   .job-btns {
     display: none;
