@@ -42,6 +42,10 @@ header {
   padding-left: 0;
 }
 
+.comp-lang {
+  font-weight: 600;
+}
+
 @media all and (max-width:767px) {
   .job-btns {
     display: none;
