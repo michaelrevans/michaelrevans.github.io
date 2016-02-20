@@ -42,6 +42,14 @@ header {
   padding-left: 0;
 }
 
+#personal-skills .panel-title {
+  text-align: center;
+}
+
+.panel-body>ul>li {
+  padding-bottom: 7px;
+}
+
 .comp-lang {
   font-weight: 600;
 }
