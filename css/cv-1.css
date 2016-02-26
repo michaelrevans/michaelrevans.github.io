@@ -27,8 +27,37 @@ header {
   padding-bottom: 10px;
 }
 
+#auto1.in {
+  padding-bottom: 1px;
+}
+
 .job-btns {
   float:right;
+}
+
+#auto1 ul {
+  list-style: none;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#auto1 ul li {
+  padding-top: 4px;
+}
+
+#auto1 p {
+  margin-bottom: 0;
+}
+
+.list-triangle-right {
+  background-color: rgba(0, 0, 0, 0);
+  border-left: 10px solid #2e6da4;
+  border-bottom: 8px solid #ffffff;
+  border-top: 8px solid #ffffff;
+  position: relative;
+  display: inline-block;
+  margin-bottom: -4px;
+  padding-right: 5px;
 }
 
 .upside-down {
