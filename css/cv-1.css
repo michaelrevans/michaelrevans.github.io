@@ -42,7 +42,7 @@ header {
 }
 
 #auto1 ul li {
-  padding-top: 4px;
+  padding-top: 10px;
 }
 
 #auto1 p {
@@ -57,7 +57,7 @@ header {
   position: relative;
   display: inline-block;
   margin-bottom: -4px;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 .upside-down {
@@ -102,19 +102,12 @@ header {
 @media all and (min-width:992px) {
   .nav-tabs li:first-child {
     margin-left: 106px;
-  }
-  .tab-pane {
-    width: 84%;
-    margin-left: 8%;
+
   }
 }
 
 @media all and (min-width:1200px) {
   .nav-tabs li:first-child {
     margin-left: 206px;
-  }
-  .tab-pane {
-    width: 76%;
-    margin-left: 12%;
   }
 }
