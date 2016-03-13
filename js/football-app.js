@@ -212,12 +212,20 @@ app.controller('TableController', ['$scope', function($scope) {
 
 
 $(document).ready(function() {
+  var number_relegated_teams = 3;
+
 
   var teams = $('tbody>tr>td:nth-child(1)');
-  // console.log(teams.length);
   for (var i = 0; i < teams.length; i++) {
     teams[i].innerHTML = i + 1
-    // console.log(teams[i].innerHTML);
   }
-  // console.log(teams[0]);
+
+  var $team_rows = $('.team-row');
+  var teams_in_relegation_zone = $team_rows.slice(-number_relegated_teams);
+  var top_team = $team_rows.slice(0,1);
+
+  teams_in_relegation_zone.addClass('danger');
+  top_team.addClass('success');
+
+
 });
