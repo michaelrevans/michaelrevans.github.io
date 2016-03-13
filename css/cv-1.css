@@ -62,8 +62,8 @@ header {
 
 .upside-down {
   -webkit-transform: rotate(-180deg);
-  -moz-tranform: rotate(-180deg);
-  tranform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 .panel-body ul {
