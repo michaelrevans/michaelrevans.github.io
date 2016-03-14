@@ -5,7 +5,6 @@ var app = angular.module('footballApp', []);
 app.controller('TableController', ['$scope', function($scope) {
 
          $scope.teams = [
-
            {
              name: 'Tottenham',
              played: 28,
@@ -206,7 +205,6 @@ app.controller('TableController', ['$scope', function($scope) {
              goals_against: 26,
              points: 47,
            },
-
          ]
        }])
 
