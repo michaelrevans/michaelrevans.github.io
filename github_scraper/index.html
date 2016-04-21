@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="githubApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Michael Evans' Github Repo Scraper</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <h1><center>Github Scraper</center></h1>
+    </header>
+
+    <!-- start of container -->
+    <div class="container" ng-controller="ListController">
+      <h4>Enter a Github username and click the submit button to see a list of that user's repositories.</h4>
+
+      <!-- form elements: label, input field, submit button-->
+      <form ng-submit="submit(username)">
+        <div class="form-group row">
+          <label for="username" class="col-xs-12 col-sm-2">Username</label>
+          <div class="col-xs-12 col-sm-5">
+            <input type="text" name="username" ng-model="username" placeholder="Enter a Github username" id="username-input" class="form-control">
+          </div>
+          <button type="submit" class="col-xs-2 col-xs-offset-1 btn btn-small btn-primary" id="submit">Submit</button>
+        </div>
+      </form>
+
+      <!-- table containing github repo information -->
+      <div id="results" class="row row-content">
+        <div class="col-xs-12">
+          <p>{{len}} repositories found for <strong>{{usr}}</strong></p>
+          <table class="table table-striped">
+            <thead>
+              <tr class="info">
+                <td class="hidden-xs">ID</td>
+                <td>Repository Name</td>
+                <td class="hidden-xs">Link</td>
+              </tr>
+            </thead>
+            <tbody class="hidden-xs">
+              <tr class="repo-row" ng-repeat="repo in repos">
+                <td>{{repo.id}}</td>
+                <td>{{repo.name}}</td>
+                <td><a target="_blank" ng-href={{repo.html_url}}>{{repo.html_url}}</a></td>
+              </tr>
+            </tbody>
+            <tbody class="visible-xs">
+              <tr class="repo-row" ng-repeat="repo in repos">
+                <td><a target="_blank" ng-href={{repo.html_url}}>{{repo.name}}</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- message when github username is invalid/not recognised-->
+      <div id="invalid" class="row row-content">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 alert alert-danger">
+          <h4>Sorry, this username was not recognised. Please enter a valid Github username.</h4>
+        </div>
+      </div>
+
+      <!-- message when repos len is 0 -->
+      <div id="no-results" class="row row-content warning">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 alert alert-warning">
+          <h4>This user has no repos</h4>
+        </div>
+      </div>
+
+    <!-- end of container -->
+    </div>
+
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "github_scraper",
+  "description": "this page displays a list of linked repos for the username that the user defines",
+  "main": "index.js",
+  "authors": [
+    "Michael Evans"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6"
+  }
+}
