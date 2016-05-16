@@ -30,27 +30,42 @@
       <div id="results" class="row row-content">
         <div class="col-xs-12">
           <p>{{len}} repositories found for <strong>{{usr}}</strong></p>
-          <table class="table table-striped">
+          <!-- first table, for sm, md, lg -->
+          <table class="table table-striped hidden-xs">
             <thead>
               <tr class="info">
-                <td class="hidden-xs">ID</td>
                 <td>Repository Name</td>
-                <td class="hidden-xs">Link</td>
+                <td>Link</td>
+                <td>Language</td>
+                <td>Last Updated</td>
               </tr>
             </thead>
             <tbody class="hidden-xs">
-              <tr class="repo-row" ng-repeat="repo in repos">
-                <td>{{repo.id}}</td>
+              <tr class="repo-row" ng-repeat="repo in repos | orderBy:'-updated_at'">
                 <td>{{repo.name}}</td>
                 <td><a target="_blank" ng-href={{repo.html_url}}>{{repo.html_url}}</a></td>
-              </tr>
-            </tbody>
-            <tbody class="visible-xs">
-              <tr class="repo-row" ng-repeat="repo in repos">
-                <td><a target="_blank" ng-href={{repo.html_url}}>{{repo.name}}</a></td>
+                <td>{{repo.language}}</td>
+                <td>{{repo.updated_at | date}}</td>
               </tr>
             </tbody>
           </table>
+          <!-- end first table -->
+          <!-- start second table, for xs -->
+          <table class="table table-striped visible-xs">
+            <thead>
+              <tr class="info">
+                <td>Repository Name</td>
+                <td>Last Updated</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="repo-row" ng-repeat="repo in repos">
+                <td><a target="_blank" ng-href={{repo.html_url}}>{{repo.name}}</a></td>
+                <td>{{repo.updated_at | date}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- end second table -->
         </div>
       </div>
 
