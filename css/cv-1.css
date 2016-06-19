@@ -1,54 +1,31 @@
 header {
   text-align: center;
 }
-
 .tab-pane h1 {
   text-align: center;
 }
-
 .tab-pane table {
-  margin:20px auto;
+  margin: 20px auto;
 }
-
 .table tr td {
   vertical-align: middle!important;
 }
-
 #professional-experience h2 {
   margin-bottom: 0;
   margin-top: 20px;
 }
-
+#professional-experience h2[data-toggle="collapse"] {
+  cursor: pointer;
+}
 #professional-experience .collapse p {
   margin-bottom: 0;
 }
-
 #professional-experience .in {
   padding-bottom: 10px;
 }
-
-#auto1.in {
+#professional-experience .in#auto1 {
   padding-bottom: 1px;
 }
-
-.job-btns {
-  float:right;
-}
-
-#auto1 ul {
-  list-style: none;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-#auto1 ul li {
-  padding-top: 10px;
-}
-
-#auto1 p {
-  margin-bottom: 0;
-}
-
 .list-triangle-right {
   background-color: rgba(0, 0, 0, 0);
   border-left: 10px solid #2e6da4;
@@ -59,37 +36,47 @@ header {
   margin-bottom: -4px;
   padding-right: 10px;
 }
-
+.job-btns {
+  float: right;
+}
+#auto1.in {
+  padding-bottom: 1px;
+}
+#auto1 ul {
+  list-style: none;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+#auto1 ul li {
+  padding-top: 10px;
+}
+#auto1 p {
+  margin-bottom: 0;
+}
 .upside-down {
   -webkit-transform: rotate(-180deg);
-  -moz-transform: rotate(-180deg);
-  transform: rotate(-180deg);
+  -moz-tranform: rotate(-180deg);
+  tranform: rotate(-180deg);
 }
-
 .panel-body ul {
   list-style: none;
   padding-left: 0;
 }
-
 #personal-skills .panel-title {
   text-align: center;
 }
-
-.panel-body>ul>li {
+.panel-body > ul > li {
   padding-bottom: 7px;
 }
-
 .comp-lang {
   font-weight: 600;
 }
-
-@media all and (max-width:767px) {
+@media all and (max-width: 767px) {
   .job-btns {
     display: none;
   }
 }
-
-@media all and (min-width:768px) {
+@media all and (min-width: 768px) {
   #personal-info {
     width: 60%;
     margin-left: 20%;
@@ -97,16 +84,16 @@ header {
   .nav-tabs li:first-child {
     margin-left: 30px;
   }
-}
-
-@media all and (min-width:992px) {
-  .nav-tabs li:first-child {
-    margin-left: 106px;
-
+  #education div {
+    text-align: center;
   }
 }
-
-@media all and (min-width:1200px) {
+@media all and (min-width: 992px) {
+  .nav-tabs li:first-child {
+    margin-left: 106px;
+  }
+}
+@media all and (min-width: 1200px) {
   .nav-tabs li:first-child {
     margin-left: 206px;
   }
