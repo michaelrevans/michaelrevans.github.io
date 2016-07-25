@@ -10,6 +10,9 @@ header {
 .table tr td {
   vertical-align: middle!important;
 }
+div[role="tabpanel"] {
+  margin-bottom: 30px;
+}
 #professional-experience h2 {
   margin-bottom: 0;
   margin-top: 20px;
