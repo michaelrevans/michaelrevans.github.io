@@ -1,5 +1,8 @@
+/*
+turns the caret upside down when a tab in the experiences section is opened. turns it back when closed
+*/
 $(document).ready(function() {
-  $('.job-btns').click(function() {
-    $(this).toggleClass('upside-down');
+  $('[data-toggle="collapse"]').click(function() {
+    $(this).find('.job-btns').toggleClass('upside-down');
   });
 });
