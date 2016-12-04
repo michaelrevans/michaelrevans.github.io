@@ -41,7 +41,6 @@ div[role="tabpanel"] {
 }
 .job-btns {
   float: right;
-  transition: all 0.3s linear;
 }
 #auto1.in {
   padding-bottom: 1px;
@@ -56,6 +55,9 @@ div[role="tabpanel"] {
 }
 #auto1 p {
   margin-bottom: 0;
+}
+.btn .caret {
+  transition: all 0.3s linear;
 }
 .upside-down {
   -webkit-transform: rotate(-180deg);
