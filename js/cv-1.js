@@ -3,6 +3,6 @@ turns the caret upside down when a tab in the experiences section is opened. tur
 */
 $(document).ready(function() {
   $('[data-toggle="collapse"]').click(function() {
-    $(this).find('.job-btns').toggleClass('upside-down');
+    $(this).find('.job-btns span').toggleClass('upside-down');
   });
 });
