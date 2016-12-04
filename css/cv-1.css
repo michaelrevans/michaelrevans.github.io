@@ -1,6 +1,9 @@
 header {
   text-align: center;
 }
+p {
+  margin: 0;
+}
 .tab-pane h1 {
   text-align: center;
 }
