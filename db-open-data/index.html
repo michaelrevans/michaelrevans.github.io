@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html ng-app="BahnApp">
+<html ng-app="bahnApp">
 <head>
   <meta charset="utf-8">
   <meta name="description" content="An app using the Open Data API provided by Deutsche Bahn">
   <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DB Open Data App</title>
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body ng-controller="MainController">
   <header></header>
 
-  <div ui-view></div>
+  <div ui-view="content"></div>
+
+  <h1>Outside view, hello world</h1>
+
+  <button type="button" name="button">
+    <a ui-sref="home">Home</a>
+  </button>
+
+  <p>
+    {{ return }}
+  </p>
+
+  <p>
+    {{ bland }}
+  </p>
+
 
 <!--
   <div class="container">
@@ -23,15 +38,19 @@
         </p>
       </div>
     </div>
-  </div> -->
-
+  </div>
+ -->
 
   <footer></footer>
 
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="app/app.module.js"></script>
+<script type="text/javascript" src="app/components/home/homeService.js"></script>
+<script type="text/javascript" src="app/components/home/homeController.js"></script>
+
+<!-- <script type="text/javascript" src="js/index.js"></script> -->
 </body>
 </html>

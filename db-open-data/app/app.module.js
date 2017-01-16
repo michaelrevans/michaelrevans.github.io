@@ -1,10 +1,13 @@
-var bahnApp = angular.module('BahnApp', ['ui.router']);
+var app = angular.module('bahnApp', ['ui.router', 'MainController', 'dbInfoService'])
 
-                      .config(['$urlRouterProvider', '$stateProvider', function() {
-                        $stateProvider
-                          .state('bahnApp', {
-                            url: '/',
-                            views: {}
-                          })
-                        $urlRouterProvider.otherwise('/');
-                      }]);
+.config(function($urlRouterProvider, $stateProvider) {
+  $stateProvider.state('home', {
+      url: '/',
+      views: {
+          'content': {
+            templateUrl: 'app/components/home/homeView.html'
+          }
+      }
+  })
+  $urlRouterProvider.otherwise('/');
+});
