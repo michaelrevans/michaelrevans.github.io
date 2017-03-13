@@ -160,6 +160,12 @@ function updateViewMode() {
   })
 }
 
+function enterPressHandler(event) {
+  if (event.which === 13) {
+    inputSubmit.click();
+  }
+}
+
 setInitialDate();
 setInitialTimeMode();
 checkLocalStorage();
@@ -173,4 +179,7 @@ inputSubmit.addEventListener('click', function() {
   getUserInput();
   inputCancelButton.click();
 })
+inputEventField.addEventListener('keypress', enterPressHandler);
+inputDateField.addEventListener('keypress', enterPressHandler);
+inputTimeField.addEventListener('keypress', enterPressHandler);
 updateViewMode();
