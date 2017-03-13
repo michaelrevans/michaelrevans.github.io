@@ -118,12 +118,15 @@ function calculateTimeString(aim, mode) {
       timeString = restDay + restDayStr + restHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "hour":
+      restHrStr = diffHr === 1 ? ' hour, ' : ' hours, ';
       timeString = diffHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "min":
+      restMinStr = diffMin === 1 ? ' minute, ' : ' minutes, ';
       timeString = diffMin + restMinStr + restSec + restSecStr;
       break;
     case "sec":
+      restSecStr = diffSec === 1 ? ' second' : ' seconds';
       timeString = diffSec + restSecStr;
   }
   return timeString;
