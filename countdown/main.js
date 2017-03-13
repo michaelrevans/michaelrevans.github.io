@@ -10,6 +10,7 @@ var inputSubmit = doc.getElementById('event-submit');
 var timeViewMode = "sec";
 var viewModeDropwdown = doc.getElementsByClassName('change-time-dropwdown')[0];
 var timeLeftSpan = document.getElementById('time-left');
+var dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 
 function checkLocalStorage() {
@@ -19,6 +20,7 @@ function checkLocalStorage() {
     dateTime = convertInputToDate(eventDate, eventTime);
     eventName = localStorage.eventName;
     updateEvent(dateTime, eventName);
+    setInitialDate(eventDate);
   }
 }
 
@@ -29,7 +31,6 @@ function setLocalStorage(eventDate, eventTime, eventName) {
 }
 
 function convertInputToDate(inputDate, inputTime) {
-  var dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/g;
   var date = dateRegex.exec(inputDate);
   console.log(inputDate);
   console.log(parseInt(inputTime.slice(3, 5)));
@@ -42,18 +43,23 @@ function convertInputToDate(inputDate, inputTime) {
   return finalDate;
 }
 
-function setInitialDate() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-  if (dd.toString().length === 1) {
-    dd = "0" + dd.toString();
+function setInitialDate(storedDate) {
+  if (dateRegex.test(storedDate)) {
+    inputDateField.value = storedDate;
+    console.log("stored date accepted");
+  } else {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd.toString().length === 1) {
+      dd = "0" + dd.toString();
+    }
+    if (mm.toString().length === 1) {
+      mm = "0" + mm.toString();
+    }
+    inputDateField.value = yyyy + "-" + mm + "-" + dd;
   }
-  if (mm.toString().length === 1) {
-    mm = "0" + mm.toString();
-  }
-  inputDateField.value = yyyy + "-" + mm + "-" + dd;
 }
 
 function setInitialTimeMode() {
