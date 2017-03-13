@@ -87,6 +87,13 @@ table {
 	margin-bottom: 20px;
 }
 
+.input-submit input {
+	background-color: #ffffff;
+	color: #7777bb;
+	border-radius: 3px;
+	border: none;
+}
+
 .input-cancel {
 	visibility: hidden;
 	position: absolute;
