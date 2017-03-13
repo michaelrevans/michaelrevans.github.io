@@ -11,6 +11,7 @@ var timeViewMode = "sec";
 var viewModeDropwdown = doc.getElementsByClassName('change-time-dropwdown')[0];
 var timeLeftSpan = document.getElementById('time-left');
 var dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/;
+var timeRegex = /^\d{2}:\d{2}$/;
 
 
 function checkLocalStorage() {
@@ -21,6 +22,7 @@ function checkLocalStorage() {
     eventName = localStorage.eventName;
     updateEvent(dateTime, eventName);
     setInitialDate(eventDate);
+    setInitialTime(eventTime);
   }
 }
 
@@ -59,6 +61,12 @@ function setInitialDate(storedDate) {
       mm = "0" + mm.toString();
     }
     inputDateField.value = yyyy + "-" + mm + "-" + dd;
+  }
+}
+
+function setInitialTime(storedTime) {
+  if (timeRegex.test(storedTime)) {
+    inputTimeField.value = storedTime;
   }
 }
 
