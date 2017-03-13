@@ -9,6 +9,7 @@ var inputEventField = doc.getElementById('event-event');
 var inputSubmit = doc.getElementById('event-submit');
 var timeViewMode = "sec";
 var viewModeDropwdown = doc.getElementsByClassName('change-time-dropwdown')[0];
+var timeLeftSpan = document.getElementById('time-left');
 
 
 function checkLocalStorage() {
@@ -36,7 +37,7 @@ function convertInputToDate(inputDate, inputTime) {
       var finalDate = new Date(parseInt(date[1]), parseInt(date[2]) - 1, parseInt(date[3]), parseInt(inputTime.slice(0, 2)), parseInt(inputTime.slice(3, 5)));
   }
   catch (err) {
-    throw new Error(err);
+    throw new Error("convert input to date");
   }
   return finalDate;
 }
@@ -64,22 +65,27 @@ function getUserInput() {
   var inputTime = inputTimeField.value;
   var inputName = inputEventField.value;
   try {
-      var eventTime = convertInputToDate(inputDate, inputTime);
-      setLocalStorage(inputDate, inputTime, eventName);
-      updateEvent(eventTime, eventName);
+    var eventTime = convertInputToDate(inputDate, inputTime);
+    setLocalStorage(inputDate, inputTime, inputName);
+    updateEvent(eventTime, inputName);
   }
   catch (err) {
-      // getUserInput();
+    console.log(err);
   }
 }
 
 function updateEvent(eventTime, eventName) {
-  clearInterval(window.interval);
-  updateNameString(eventName);
-  console.log(eventTime);
-  window.interval = setInterval(function() {
-    updateTimeString(eventTime, timeViewMode);
-  }, 100)
+  try {
+    clearInterval(window.interval);
+    updateNameString(eventName);
+    console.log(eventTime);
+    window.interval = setInterval(function() {
+      updateTimeString(eventTime, timeViewMode);
+    }, 100)
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 function updateNameString(eventName) {
@@ -119,21 +125,6 @@ function calculateTimeString(aim, mode) {
 
 function updateTimeString(aim, mode) {
   var restTimeStr = calculateTimeString(aim, mode);
-  // var now = new Date();
-  // var diff = aim - now;
-  // var diffSec = parseInt(diff / 1000);
-  // var diffMin = parseInt(diffSec / 60);
-  // var diffHr = parseInt(diffMin / 60);
-  // var restDay = parseInt(diffHr / 24);
-  // var restHr = diffHr - (restDay * 24);
-  // var restMin = diffMin - (diffHr * 60);
-  // var restSec = diffSec - (diffMin * 60);
-  // var restDayStr = restDay === 1 ? ' day, ' : ' days, ';
-  // var restHrStr = restHr === 1 ? ' hour, ' : ' hours, ';
-  // var restMinStr = restMin === 1 ? ' minute, ' : ' minutes, ';
-  // var restSecStr = restSec === 1 ? ' second' : ' seconds';
-  // var restTimeStr = restDay + restDayStr + restHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
-  var timeLeftSpan = document.getElementById('time-left');
   timeLeftSpan.innerText = restTimeStr;
 }
 
