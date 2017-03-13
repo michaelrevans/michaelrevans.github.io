@@ -23,6 +23,7 @@ function checkLocalStorage() {
     updateEvent(dateTime, eventName);
     setInitialDate(eventDate);
     setInitialTime(eventTime);
+    setInitialName(eventName);
   }
 }
 
@@ -67,6 +68,12 @@ function setInitialDate(storedDate) {
 function setInitialTime(storedTime) {
   if (timeRegex.test(storedTime)) {
     inputTimeField.value = storedTime;
+  }
+}
+
+function setInitialName(storedName) {
+  if (storedName !== undefined && storedName !== null) {
+    inputEventField.value = storedName;
   }
 }
 
