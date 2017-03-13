@@ -1,0 +1,148 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+.input-overlay {
+  height: 0;
+  width: 0;
+	opacity: 0;
+  background-color: #7777bb;
+  position: absolute;
+	z-index: 2;
+	transition: height 0.3s, width 0.3s, opacity 0.3s;
+}
+
+.input-overlay.active {
+	height: 100vh;
+	width: 100%;
+	opacity: 1;
+	overflow: hidden;
+}
+
+.input-overlay.active .input-cancel {
+	visibility: visible;
+}
+
+.input-wrapper {
+	position: relative;
+	top: 100px;
+	left: 30px;
+}
+
+.input-wrapper label {
+	color: #ffffff;
+	font-size: 20px;
+	margin-bottom: 8px;
+	display: block;
+}
+
+.input-wrapper input:not(#event-submit) {
+	width: 200px;
+	font-size: 17px;
+	height: 23px;
+}
+
+.input-date, .input-time, .input-event {
+	margin-bottom: 20px;
+}
+
+.input-cancel {
+	visibility: hidden;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	padding: 5px 10px;
+	border: none;
+	background-color: #ffffff;
+	border-radius: 5px;
+	color: #7777bb;
+	width: 110px;
+}
+
+.time-left--wrapper {
+	padding: 60px 30px 0;
+}
+
+.time-left--heading {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#time-left {
+  font-size: 3.5rem;
+	color: #7777bb;
+}
+
+.change-event {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 1;
+}
+
+#update-event {
+  padding: 5px 10px;
+  border: none;
+  background-color: #7777bb;
+  border-radius: 5px;
+	width: 110px;
+	color: #ffffff;
+}
+
+.change-time-view {
+	position: absolute;
+	right: 20px;
+	top: 30px;
+}
+
+.change-time-dropwdown {
+	border: none;
+	background: #7777bb;
+	width: 110px;
+	color: white;
+	height: 23px;
+	border-radius: 3px;
+	text-align: center;
+	padding-left: 15px;
+}

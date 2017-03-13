@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Countdown to Mexico</title>
+    <link rel="stylesheet" href="./styles.css" media="screen">
+  </head>
+  <body>
+
+    <div class="input-overlay active">
+      <div class="input-wrapper">
+        <div class="input-date">
+          <label for="event-date">Enter the date of your event</label>
+          <input type="date" name="date" id="event-date" value="">
+        </div>
+        <div class="input-time">
+          <label for="event-time">Enter the time of your event</label>
+          <input type="time" name="time" id="event-time" value="00:00">
+        </div>
+        <div class="input-event">
+          <label for="event.event">Enter the name of your event</label>
+          <input type="text" name="event" id="event-event" value="">
+        </div>
+        <div class="input-submit">
+          <input type="submit" id="event-submit" value="GO!">
+        </div>
+      </div>
+
+      <button class="input-cancel">Close</button>
+
+    </div>
+
+    <div class="time-left--wrapper">
+      <h1 class="time-left--heading">There is only <br><span id="time-left"></span><br> until <span id="to-event"></span></h1>
+    </div>
+
+    <div class="change-event">
+      <button type="button" name="button" id="update-event">Change event</button>
+    </div>
+
+    <div class="change-time-view">
+      <select class="change-time-dropwdown" name="change-time">
+        <option value="day">Days</option>
+        <option value="hour">Hours</option>
+        <option value="min">Minutes</option>
+        <option value="sec">Seconds</option>
+      </select>
+    </div>
+
+<script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>
