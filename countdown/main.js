@@ -147,5 +147,6 @@ inputCancelButton.addEventListener('click', function() {
 })
 inputSubmit.addEventListener('click', function() {
   getUserInput();
+  inputCancelButton.click();
 })
 updateViewMode();
