@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"/>
-    <title>Countdown to Mexico</title>
+    <title>Countdown Timer</title>
     <link rel="stylesheet" href="./styles.css" media="screen">
   </head>
   <body>
 
-    <div class="input-overlay active">
+    <div class="input-overlay">
       <div class="input-wrapper">
         <div class="input-date">
           <label for="event-date">Enter the date of your event</label>
@@ -40,12 +40,19 @@
     </div>
 
     <div class="change-time-view">
-      <select class="change-time-dropwdown" name="change-time">
+      <!-- <select class="change-time-dropdown" name="change-time">
         <option value="day">Days</option>
         <option value="hour">Hours</option>
         <option value="min">Minutes</option>
         <option value="sec">Seconds</option>
-      </select>
+      </select> -->
+      <button type="button" name="time-view" class="change-time-dropdown" id="time-view-dropdown-button">Choose time mode</button>
+      <div class="change-time-dropdown-menu" id="time-view-dropdown">
+        <a href="#" value="day">Days</a>
+        <a href="#" value="hour">Hours</a>
+        <a href="#" value="min">Minutes</a>
+        <a href="#" value="sec">Seconds</a>
+      </div>
     </div>
 
 <script type="text/javascript" src="./main.js"></script>

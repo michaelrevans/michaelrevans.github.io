@@ -17,6 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -104,11 +105,18 @@ table {
 	background-color: #ffffff;
 	border-radius: 5px;
 	color: #7777bb;
-	width: 110px;
+	width: 150px;
+	font-size: 14px;
 }
 
 .time-left--wrapper {
-	padding: 60px 30px 0;
+	padding: 90px 30px 0;
+}
+
+@media all and (max-width: 767px) {
+	.time-left--wrapper {
+		padding-top: 150px;
+	}
 }
 
 .time-left--heading {
@@ -119,6 +127,12 @@ table {
 #time-left {
   font-size: 3.5rem;
 	color: #7777bb;
+}
+
+@media all and (max-width: 767px) {
+	#time-left i {
+		display: block;
+	}
 }
 
 .change-event {
@@ -133,23 +147,74 @@ table {
   border: none;
   background-color: #7777bb;
   border-radius: 5px;
-	width: 110px;
+	width: 150px;
 	color: #ffffff;
+	font-size: 14px;
+	height: 29px;
 }
 
 .change-time-view {
 	position: absolute;
-	right: 20px;
+	right: 30px;
 	top: 30px;
 }
 
-.change-time-dropwdown {
+@media all and (max-width: 767px) {
+	.change-time-view {
+		left: 30px;
+		top: 75px;
+	}
+}
+
+.change-time-dropdown {
+	border: none;
+	background-color: #7777bb;
+	width: 150px;
+	color: #ffffff;
+	height: 29px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	text-align: center;
+	font-size: 14px;
+	outline: none;
+	transition: color 0.3s;
+}
+
+.change-time-dropdown.fade-out {
+	color: #7777bb;
+}
+
+.change-time-dropdown-menu {
+	transition: height 0.3s ease-in;
+	overflow: hidden;
+}
+
+.change-time-dropdown-menu.open {
+	transition: height 0.3s ease-out;
+}
+
+.change-time-dropdown-menu a {
+	display: block;
 	border: none;
 	background: #7777bb;
-	width: 110px;
+	width: 150px;
 	color: white;
-	height: 23px;
-	border-radius: 3px;
+	padding: 8px 0;
 	text-align: center;
-	padding-left: 15px;
+	font-size: 14px;
+	text-decoration: none;
+	border-top: 1px solid;
+}
+
+.change-time-dropdown-menu a:last-child {
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.change-time-dropdown-menu a:hover {
+	background-color: #9999dd;
+}
+
+.change-time-dropdown-menu a.selected {
+	background-color: #8888cc;
 }

@@ -1,5 +1,8 @@
 var doc = document;
 var eventTitle = doc.getElementById('to-event');
+var timeViewDropdownButton = doc.getElementById('time-view-dropdown-button');
+var timeViewDropdown = doc.getElementById('time-view-dropdown');
+var timeViewOptions = timeViewDropdown.querySelectorAll('a');
 var updateEventButton = doc.getElementById('update-event');
 var inputCancelButton = doc.getElementsByClassName('input-cancel')[0];
 var inputOverlay = doc.getElementsByClassName('input-overlay')[0];
@@ -13,6 +16,53 @@ var timeLeftSpan = document.getElementById('time-left');
 var dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/;
 var timeRegex = /^\d{2}:\d{2}$/;
 
+function getDropdownHeight(dropdownEl) {
+  return dropdownEl.offsetHeight;
+}
+
+function controlDropdown() {
+  var dropdownHeight = getDropdownHeight(timeViewDropdown);
+  timeViewDropdown.style.height = 0;
+  timeViewDropdownButton.addEventListener('click', function() {
+    if (timeViewDropdown.classList.contains('open')) {
+      timeViewDropdown.classList.remove('open');
+      timeViewDropdown.style.height = 0;
+    } else {
+      timeViewDropdown.classList.add('open');
+      timeViewDropdown.style.height = dropdownHeight + "px";
+    }
+  });
+}
+
+function dropdownSelect() {
+  for (var i = 0; i < timeViewOptions.length; i++) {
+    timeViewOptions[i].addEventListener('click', function() {
+      timeViewMode = this.getAttribute('value');
+      removeSiblingHighlighting(this);
+      this.classList.add('selected');
+      localStorage.timeViewMode = timeViewMode;
+      timeViewDropdownButton.textContent = this.textContent;
+      timeViewDropdown.style.height = 0;
+      timeViewDropdown.classList.remove('open');
+      setTimeout(dropdownButtonFade, 1000);
+    });
+  }
+}
+
+function removeSiblingHighlighting(element) {
+  var elSiblings = element.parentNode.children;
+  for (var i = 0; i < elSiblings.length; i ++) {
+    elSiblings[i].classList.remove('selected');
+  }
+}
+
+function dropdownButtonFade() {
+  timeViewDropdownButton.classList.add('fade-out');
+  console.log(setTimeout(function() {
+    timeViewDropdownButton.textContent = "Change time mode";
+    timeViewDropdownButton.classList.remove('fade-out');
+  }, 300));
+}
 
 function checkLocalStorage() {
   if (localStorage.eventTime !== undefined && localStorage.eventDate !== undefined) {
@@ -20,6 +70,7 @@ function checkLocalStorage() {
     eventTime = localStorage.eventTime;
     dateTime = convertInputToDate(eventDate, eventTime);
     eventName = localStorage.eventName;
+    timeViewMode = localStorage.timeViewMode;
     updateEvent(dateTime, eventName);
     setInitialDate(eventDate);
     setInitialTime(eventTime);
@@ -102,7 +153,7 @@ function updateEvent(eventTime, eventName) {
     console.log(eventTime);
     window.interval = setInterval(function() {
       updateTimeString(eventTime, timeViewMode);
-    }, 100)
+    }, 100);
   }
   catch (err) {
     console.log(err);
@@ -123,21 +174,26 @@ function calculateTimeString(aim, mode) {
   var restHr = diffHr - (restDay * 24);
   var restMin = diffMin - (diffHr * 60);
   var restSec = diffSec - (diffMin * 60);
-  var restDayStr = restDay === 1 ? ' day, ' : ' days, ';
-  var restHrStr = restHr === 1 ? ' hour, ' : ' hours, ';
-  var restMinStr = restMin === 1 ? ' minute, ' : ' minutes, ';
+  var restDayStr = restDay === 1 ? ' day' : ' days';
+  var restHrStr = restHr === 1 ? ' hour' : ' hours';
+  var restMinStr = restMin === 1 ? ' minute' : ' minutes';
   var restSecStr = restSec === 1 ? ' second' : ' seconds';
   var timeString;
+  restDayStr += ',<i></i> ';
+  restHrStr += ',<i></i> ';
+  restMinStr += ',<i></i> ';
   switch (mode) {
     case "day":
       timeString = restDay + restDayStr + restHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "hour":
-      restHrStr = diffHr === 1 ? ' hour, ' : ' hours, ';
+      restHrStr = diffHr === 1 ? ' hour' : ' hours';
+      restHrStr += ',<i></i> ';
       timeString = diffHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "min":
-      restMinStr = diffMin === 1 ? ' minute, ' : ' minutes, ';
+      restMinStr = diffMin === 1 ? ' minute' : ' minutes';
+      restMinStr += ',<i></i> ';
       timeString = diffMin + restMinStr + restSec + restSecStr;
       break;
     case "sec":
@@ -149,16 +205,16 @@ function calculateTimeString(aim, mode) {
 
 function updateTimeString(aim, mode) {
   var restTimeStr = calculateTimeString(aim, mode);
-  timeLeftSpan.innerText = restTimeStr;
+  timeLeftSpan.innerHTML = restTimeStr;
 }
 
-function updateViewMode() {
-  viewModeDropwdown.addEventListener('change', function() {
-    console.log('new mode');
-    console.log(viewModeDropwdown.value)
-    timeViewMode = viewModeDropwdown.value;
-  })
-}
+// function updateViewMode() {
+//   viewModeDropwdown.addEventListener('change', function() {
+//     console.log('new mode');
+//     console.log(viewModeDropwdown.value)
+//     timeViewMode = viewModeDropwdown.value;
+//   })
+// }
 
 function enterPressHandler(event) {
   if (event.which === 13) {
@@ -167,19 +223,21 @@ function enterPressHandler(event) {
 }
 
 setInitialDate();
-setInitialTimeMode();
+// setInitialTimeMode();
 checkLocalStorage();
+controlDropdown();
+dropdownSelect();
 updateEventButton.addEventListener('click', function() {
   inputOverlay.classList.add("active");
 });
 inputCancelButton.addEventListener('click', function() {
   inputOverlay.classList.remove("active");
-})
+});
 inputSubmit.addEventListener('click', function() {
   getUserInput();
   inputCancelButton.click();
-})
+});
 inputEventField.addEventListener('keypress', enterPressHandler);
 inputDateField.addEventListener('keypress', enterPressHandler);
 inputTimeField.addEventListener('keypress', enterPressHandler);
-updateViewMode();
+// updateViewMode();
