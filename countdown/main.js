@@ -58,10 +58,10 @@ function removeSiblingHighlighting(element) {
 
 function dropdownButtonFade() {
   timeViewDropdownButton.classList.add('fade-out');
-  console.log(setTimeout(function() {
+  setTimeout(function() {
     timeViewDropdownButton.textContent = "Change time mode";
     timeViewDropdownButton.classList.remove('fade-out');
-  }, 300));
+  }, 300);
 }
 
 function checkLocalStorage() {
@@ -86,8 +86,6 @@ function setLocalStorage(eventDate, eventTime, eventName) {
 
 function convertInputToDate(inputDate, inputTime) {
   var date = dateRegex.exec(inputDate);
-  console.log(inputDate);
-  console.log(parseInt(inputTime.slice(3, 5)));
   try {
       var finalDate = new Date(parseInt(date[1]), parseInt(date[2]) - 1, parseInt(date[3]), parseInt(inputTime.slice(0, 2)), parseInt(inputTime.slice(3, 5)));
   }
@@ -100,7 +98,6 @@ function convertInputToDate(inputDate, inputTime) {
 function setInitialDate(storedDate) {
   if (dateRegex.test(storedDate)) {
     inputDateField.value = storedDate;
-    console.log("stored date accepted");
   } else {
     var today = new Date();
     var dd = today.getDate();
@@ -174,10 +171,10 @@ function calculateTimeString(aim, mode) {
   var restHr = diffHr - (restDay * 24);
   var restMin = diffMin - (diffHr * 60);
   var restSec = diffSec - (diffMin * 60);
-  var restDayStr = restDay === 1 ? ' day' : ' days';
-  var restHrStr = restHr === 1 ? ' hour' : ' hours';
-  var restMinStr = restMin === 1 ? ' minute' : ' minutes';
-  var restSecStr = restSec === 1 ? ' second' : ' seconds';
+  var restDayStr = (restDay === 1) ? ' day' : ' days';
+  var restHrStr = (restHr === 1) ? ' hour' : ' hours';
+  var restMinStr = (restMin === 1) ? ' minute' : ' minutes';
+  var restSecStr = (restSec === 1) ? ' second' : ' seconds';
   var timeString;
   restDayStr += ',<i></i> ';
   restHrStr += ',<i></i> ';
@@ -187,18 +184,20 @@ function calculateTimeString(aim, mode) {
       timeString = restDay + restDayStr + restHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "hour":
-      restHrStr = diffHr === 1 ? ' hour' : ' hours';
+      restHrStr = (diffHr === 1) ? ' hour' : ' hours';
       restHrStr += ',<i></i> ';
       timeString = diffHr + restHrStr + restMin + restMinStr + restSec + restSecStr;
       break;
     case "min":
-      restMinStr = diffMin === 1 ? ' minute' : ' minutes';
+      restMinStr = (diffMin === 1) ? ' minute' : ' minutes';
       restMinStr += ',<i></i> ';
       timeString = diffMin + restMinStr + restSec + restSecStr;
       break;
     case "sec":
-      restSecStr = diffSec === 1 ? ' second' : ' seconds';
+    default:
+      restSecStr = (diffSec === 1) ? ' second' : ' seconds';
       timeString = diffSec + restSecStr;
+      break;
   }
   return timeString;
 }
@@ -208,14 +207,6 @@ function updateTimeString(aim, mode) {
   timeLeftSpan.innerHTML = restTimeStr;
 }
 
-// function updateViewMode() {
-//   viewModeDropwdown.addEventListener('change', function() {
-//     console.log('new mode');
-//     console.log(viewModeDropwdown.value)
-//     timeViewMode = viewModeDropwdown.value;
-//   })
-// }
-
 function enterPressHandler(event) {
   if (event.which === 13) {
     inputSubmit.click();
@@ -223,7 +214,6 @@ function enterPressHandler(event) {
 }
 
 setInitialDate();
-// setInitialTimeMode();
 checkLocalStorage();
 controlDropdown();
 dropdownSelect();
@@ -240,4 +230,3 @@ inputSubmit.addEventListener('click', function() {
 inputEventField.addEventListener('keypress', enterPressHandler);
 inputDateField.addEventListener('keypress', enterPressHandler);
 inputTimeField.addEventListener('keypress', enterPressHandler);
-// updateViewMode();
