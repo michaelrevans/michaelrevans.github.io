@@ -1,4 +1,5 @@
 var doc = document;
+var body = doc.getElementsByTagName('body')[0];
 var eventTitle = doc.getElementById('to-event');
 var timeViewDropdownButton = doc.getElementById('time-view-dropdown-button');
 var timeViewDropdown = doc.getElementById('time-view-dropdown');
@@ -20,13 +21,17 @@ function getDropdownHeight(dropdownEl) {
   return dropdownEl.offsetHeight;
 }
 
+function closeDropdown() {
+  timeViewDropdown.classList.remove('open');
+  timeViewDropdown.style.height = 0;
+}
+
 function controlDropdown() {
   var dropdownHeight = getDropdownHeight(timeViewDropdown);
   timeViewDropdown.style.height = 0;
   timeViewDropdownButton.addEventListener('click', function() {
     if (timeViewDropdown.classList.contains('open')) {
-      timeViewDropdown.classList.remove('open');
-      timeViewDropdown.style.height = 0;
+      closeDropdown();
     } else {
       timeViewDropdown.classList.add('open');
       timeViewDropdown.style.height = dropdownHeight + "px";
@@ -213,10 +218,34 @@ function enterPressHandler(event) {
   }
 }
 
+function bodyClickHandler() {
+  body.addEventListener('click', function(event) {
+    var targetElClass = event.target.classList.value.split(' ').join('.');
+    if (event.target === body) {
+      closeDropdown();
+      return false;
+    }
+    try {
+      var el = doc.querySelectorAll('.change-time-view .' + targetElClass);
+    }
+    catch (err) {
+      closeDropdown();
+      return false;
+    }
+    finally {
+      console.log(event.target);
+      if (!el.length) {
+        closeDropdown();
+      }
+    }
+  });
+}
+
 setInitialDate();
 checkLocalStorage();
 controlDropdown();
 dropdownSelect();
+bodyClickHandler();
 updateEventButton.addEventListener('click', function() {
   inputOverlay.classList.add("active");
 });
