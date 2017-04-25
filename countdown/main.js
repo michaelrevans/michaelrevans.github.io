@@ -17,7 +17,7 @@ var timeLeftSpan = document.getElementById('time-left');
 var dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/;
 var timeRegex = /^\d{2}:\d{2}$/;
 
-var debug = true;
+var debug = false;
 
 function getDropdownHeight(dropdownEl) {
   return dropdownEl.offsetHeight;
