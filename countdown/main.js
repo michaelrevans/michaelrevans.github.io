@@ -220,15 +220,17 @@ function enterPressHandler(event) {
 
 function bodyClickHandler() {
   body.addEventListener('click', function(event) {
-    var targetElClass = event.target.classList.value.split(' ').join('.');
+    var targetElClass = event.target.classList.value.split(' ').join('.'),
+        el;
     if (event.target === body) {
       closeDropdown();
       return false;
     }
     try {
-      var el = doc.querySelectorAll('.change-time-view .' + targetElClass);
+      el = doc.querySelectorAll('.change-time-view .' + targetElClass);
     }
     catch (err) {
+      el = '';
       closeDropdown();
       return false;
     }
