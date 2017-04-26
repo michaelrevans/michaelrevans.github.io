@@ -1,6 +1,6 @@
 var doc = document;
 var body = doc.getElementsByTagName('body')[0];
-var eventTitle = doc.getElementById('to-event');
+var eventTitle = doc.getElementsByClassName('to-event');
 var timeViewDropdownButton = doc.getElementById('time-view-dropdown-button');
 var timeViewDropdown = doc.getElementById('time-view-dropdown');
 var timeViewOptions = timeViewDropdown.querySelectorAll('a');
@@ -165,7 +165,9 @@ function updateEvent(eventTime, eventName) {
 }
 
 function updateNameString(eventName) {
-  eventTitle.innerText = eventName;
+  for (var i = 0; i < eventTitle.length; i++) {
+    eventTitle[i].innerText = eventName;
+  }
 }
 
 function calculateTimeString(aim, mode) {

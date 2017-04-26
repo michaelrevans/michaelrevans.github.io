@@ -110,8 +110,12 @@ table {
 	font-size: 14px;
 }
 
-.time-left--wrapper {
+.time-left--wrapper, .time-up--wrapper {
 	padding: 90px 30px 0;
+}
+
+.time-left--wrapper.hide-text, .time-up--wrapper.hide-text {
+	display: none;
 }
 
 @media all and (max-width: 767px) {
@@ -120,7 +124,7 @@ table {
 	}
 }
 
-.time-left--heading {
+.time-left--heading, .time-up--heading {
   font-size: 3rem;
   text-align: center;
 }
