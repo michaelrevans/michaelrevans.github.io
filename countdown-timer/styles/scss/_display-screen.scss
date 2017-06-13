@@ -1,0 +1,137 @@
+@import 'variables';
+
+$fadeOutDur:    0.5s;
+$fadeInDelay1:  0.3s;
+$fadeInDur1:    0.8s;
+$fadeInDelay2:  0.3s;
+$fadeInDur2:    0.5s;
+
+.display-screen {
+  position: relative;
+}
+
+.end-time {
+  position: absolute;
+  top: -2.5rem;
+  font-size: 1.25rem;
+  text-align: center;
+  width: 100%;
+}
+
+.timemode-switch {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: opacity $fadeOutDur, z-index 0s ease-out $fadeOutDur;
+  opacity: 1;
+  z-index: 1;
+  .done & {
+    opacity: 0;
+    z-index: -1;
+  }
+  &.hidden {
+    display: none;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+  button {
+    $border-color: grey;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    width: 4rem;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    background: none;
+    outline: none;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color $fadeOutDur;
+    &:nth-of-type(1) {
+      border-left: 1px solid $border-color;
+      border-right: none;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    &:nth-of-type(2) {
+      border-right: 1px solid $border-color;
+      border-left: none;
+      margin-left: -5px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    &.active {
+      background-color: $green-main;
+    }
+  }
+}
+
+.timer-display {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  transition: opacity $fadeOutDur, z-index 0s ease-out $fadeOutDur;
+  opacity: 1;
+  z-index: 1;
+  .done & {
+    opacity: 0;
+    z-index: -1;
+  }
+  [class$='-display'] {
+    display: inline-block;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.hours-display {
+  &.out {
+    display: none;
+  }
+}
+
+.timer-complete {
+  $fadeInDurMessage: #{$fadeOutDur + $fadeInDelay1};
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity $fadeOutDur ease-in $fadeInDurMessage, z-index 0s;
+  .done & {
+    opacity: 1;
+    z-index: 1;
+  }
+  p {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  button {
+    $fadeInDelayButton: #{$fadeOutDur + $fadeInDelay1 + $fadeInDur1 + $fadeInDelay2};
+    width: 9rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: $green-main;
+    opacity: 0;
+    transition: opacity $fadeInDur2 ease-in $fadeInDelayButton, background-color 0.5s;
+    .done & {
+      opacity: 1;
+    }
+    &:hover {
+      background-color: $orange-main
+    }
+  }
+}

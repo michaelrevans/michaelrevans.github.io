@@ -1,0 +1,19 @@
+
+// mixins to simplify the writing of media queries
+@mixin mobile() {
+  @media all and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media all and (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media all and (min-width: 1025px) {
+    @content;
+  }
+}

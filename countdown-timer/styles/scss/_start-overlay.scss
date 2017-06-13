@@ -1,0 +1,102 @@
+@import 'variables';
+@import 'mixins';
+
+.start-overlay {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $blue-main;
+  text-align: center;
+  transition: top 0.4s, bottom 0.4s;
+  // overlay closed by moving up 100% (off the top of the screen)
+  &.closed {
+    top: -100%;
+    bottom: 100%;
+    transition: top 0.4s ease-in 0.2s, bottom 0.4s ease-in 0.2s;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.timer-buttons {
+  .error-message {
+    margin-top: 2.5rem;
+  }
+}
+
+.preset-time, .custom-time {
+  width: 9rem;
+  height: 2.5rem;;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: $green-main;
+  border: none;
+  box-shadow: 0 0 1px 0 $blue-dark;
+  cursor: pointer;
+  transition: all 0.4s;
+  border-radius: 3px;
+  &:hover, &:focus {
+    background-color: $orange-main;
+    box-shadow: 0 0 3px 0 $blue-dark;
+    outline: none;
+  }
+}
+
+.custom-time {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 2.5rem;
+  font-family: system-ui;
+  input, button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 0 2px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    outline: none;
+    font-size: 1.2rem;
+    z-index: -1;
+    &.fore {
+      z-index: 1;
+      + button {
+        top: 105%;
+        bottom: -105%;
+        z-index: 0;
+      }
+    }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  button {
+    cursor: pointer;
+    background-color: $green-main;
+    transition: top 0.3s, bottom 0.3s, background-color 0.3s;
+    &:hover {
+      background-color: $orange-main;
+    }
+  }
+}

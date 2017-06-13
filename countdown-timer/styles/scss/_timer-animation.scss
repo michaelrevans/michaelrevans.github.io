@@ -1,0 +1,67 @@
+@import 'variables';
+@import 'mixins';
+
+.timer-animation {
+  $stroke-width: 10px;
+  $height-width-mobile: 280px;
+  $height-width-tablet: 500px;
+  $height-width-desktop: 600px;
+  $pi: 3.14159;
+  position: relative;
+  max-height: 90vh;
+  margin: auto;
+  @include mobile() {
+    width: $height-width-mobile;
+    margin-top: calc((100vh - #{$height-width-mobile}) / 2);
+  }
+  @include tablet() {
+    width: $height-width-tablet;
+    margin-top: calc((100vh - #{$height-width-tablet}) / 2);
+  }
+  @include desktop() {
+    width: $height-width-desktop;
+    margin-top: calc((100vh - #{$height-width-desktop}) / 2);
+  }
+  svg {
+    @include mobile() {
+      width: $height-width-mobile;
+      height: $height-width-mobile;
+    }
+    @include tablet() {
+      width: $height-width-tablet;
+      height: $height-width-tablet;
+    }
+    @include desktop() {
+      width: $height-width-desktop;
+      height: $height-width-desktop;
+    }
+    transform: rotate(-90deg);
+  }
+
+  circle {
+    r: calc(50% - #{$stroke-width / 2});
+    cy: 50%;
+    cx: 50%;
+    stroke-width: $stroke-width;
+    fill: none;
+  }
+  .timer-circle {
+    position: absolute;
+    top: 0;
+    circle {
+      stroke: $green-main;
+      stroke-dashoffset: calc(2 * (50% - #{$stroke-width / 2}) * #{$pi});
+      stroke-dasharray: calc(2 * (50% - #{$stroke-width / 2}) * #{$pi});
+      transition: stroke-dashoffset 1s linear;
+      &.resetting {
+        transition: stroke-dashoffset 0s;
+      }
+    }
+  }
+  .bg-circle {
+    position: relative;
+    circle {
+      stroke: rgba(10, 10, 10, 0.2); // replace with nicer colour
+    }
+  }
+}

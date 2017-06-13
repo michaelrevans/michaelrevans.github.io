@@ -2,13 +2,107 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
     <title>Countdown Timer</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
 
+    <!-- START start screen, choose timer to start -->
+    <div class="start-overlay">
+      <h1>Countdown Timer</h1>
+      <p>Select your desired countdown time - or enter your own</p>
+      <div class="timer-buttons">
+        <button type="button" class="preset-time" data-interval="300">5 mins</button>
+        <button type="button" class="preset-time" data-interval="900">15 mins</button>
+        <button type="button" class="preset-time" data-interval="1800">30 mins</button>
+        <div type="button" class="custom-time">
+          Enter mins
+          <input type="number" placeholder="Enter mins" min="1" max="1440">
+          <button type="submit">Start!</button>
+        </div>
+        <p class="error-message"></p>
+      </div>
+    </div>
+    <!-- END start screen -->
 
 
+    <div class="display-screen">
+
+      <!-- START end timer display -->
+      <div class="end-time">
+        <p>End time: <span></span></p>
+      </div>
+      <!-- END end timer display -->
+
+      <!-- START circle animation -->
+      <div class="timer-animation">
+
+        <svg  class="bg-circle" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <circle></circle>
+          </g>
+        </svg>
+
+        <svg class="timer-circle" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <circle></circle>
+          </g>
+        </svg>
+
+      </div>
+      <!-- END circle animation -->
+
+      <!-- START hour switch -->
+      <div class="timemode-switch hidden">
+        <p>Hours:</p>
+        <button class="hour-switch active" type="button">on</button>
+        <button class="hour-switch" type="button">off</button>
+      </div>
+      <!-- START hour switch -->
+
+      <!-- START countdown, displays hours, minutes and seconds -->
+      <div class="timer-display">
+        <div class="hours-display out">
+          <div class="hours-value">
+            0
+          </div>
+          <div>
+            hour<span class="hours-plural">s</span>
+          </div>
+        </div>
+        <div class="minutes-display">
+          <div class="minutes-value">
+            0
+          </div>
+          <div>
+            minute<span class="minutes-plural">s</span>
+          </div>
+        </div>
+        <div class="seconds-display">
+          <div class="seconds-value">
+            0
+          </div>
+          <div>
+            second<span class="seconds-plural">s</span>
+          </div>
+        </div>
+      </div>
+      <!-- END countdown -->
+
+      <!-- START complete message, contains buttons to start new timer and close window -->
+      <div class="timer-complete">
+        <p>Countdown<br>completed!</p>
+        <button type="button" class="new-timer">Start new timer</button>
+        <button type="button" class="close-app">Close</button>
+      </div>
+      <!-- END complete message -->
+
+    </div>
+
+
+<!-- ployfill allows new es6 features to be polyfilled for older browsers -->
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 <script src="./bundle.js" type="text/javascript"></script>
   </body>
