@@ -1,0 +1,13 @@
+.shopping-list {
+  list-style-type: none;
+  margin: 0;
+}
+
+.shopping-list-item {
+  padding: 4px;
+  font-size: 20px;
+  span {
+    float: right;
+    cursor: pointer;
+  }
+}
