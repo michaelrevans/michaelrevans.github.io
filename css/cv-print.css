@@ -1,0 +1,74 @@
+@page {
+    margin: 2cm;
+}
+
+header h1, header h4 {
+    text-align: center;
+}
+
+.nav {
+    display: none;
+}
+
+.tab-content>.tab-pane {
+    display: block;
+    opacity: 1;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.tab-pane > div {
+    margin: 35px 0;
+    page-break-inside: avoid
+}
+
+#personal-skills .col-md-4 {
+    page-break-inside: avoid;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.well {
+    page-break-inside: avoid;
+}
+
+.tab-pane h1 {
+    text-align: center;
+}
+
+.collapse {
+    display: block;
+}
+
+.collapse ul {
+    padding-left: 20px;
+}
+
+.job-btns {
+    display: none;
+}
+
+.panel-body ul {
+    padding-left: 17px;
+}
+
+h1 {
+    font-size: 20px;
+    page-break-after: avoid;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+br {
+    display: none;
+}
