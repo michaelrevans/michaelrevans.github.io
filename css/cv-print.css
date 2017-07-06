@@ -6,6 +6,10 @@ header h1, header h4 {
     text-align: center;
 }
 
+header a {
+    display: none;
+}
+
 .nav {
     display: none;
 }
