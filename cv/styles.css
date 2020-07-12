@@ -32,7 +32,7 @@ div[role="tabpanel"] {
 #professional-experience .collapse p {
   margin-bottom: 0;
 }
-.list-triangle-right {
+.triangular-list li > span:empty {
   background-color: rgba(0, 0, 0, 0);
   border-left: 10px solid #2e6da4;
   border-bottom: 8px solid #ffffff;
@@ -45,18 +45,27 @@ div[role="tabpanel"] {
 .job-btns {
   float: right;
 }
-#auto1.in {
+.position-details {
   padding-bottom: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-#auto1 ul {
+.position h2 {
+  font-size: 24px;
+}
+.position h2 .company-name {
+  font-size: 20px;
+  font-weight: 400;
+}
+.position ul {
   list-style: none;
   padding-top: 10px;
   padding-left: 10px;
 }
-#auto1 ul li {
+.position ul li {
   padding-top: 10px;
 }
-#auto1 p {
+.collapse p {
   margin-bottom: 0;
 }
 .btn .caret {
@@ -76,16 +85,24 @@ div[role="tabpanel"] {
 }
 .panel-body > ul > li {
   padding-bottom: 7px;
+  display: inline;
+}
+.panel-body > ul > li + li:before {
+  content: "\00b7";
+  padding-right: 9px;
 }
 .comp-lang {
   font-weight: 600;
 }
-@media all and (max-width: 767px) {
+.print {
+  display: none;
+}
+@media screen and (max-width: 767px) {
   .job-btns {
     display: none;
   }
 }
-@media all and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   #personal-info {
     width: 60%;
     margin-left: 20%;
@@ -97,12 +114,12 @@ div[role="tabpanel"] {
     text-align: center;
   }
 }
-@media all and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .nav-tabs li:first-child {
     margin-left: 106px;
   }
 }
-@media all and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .nav-tabs li:first-child {
     margin-left: 206px;
   }
